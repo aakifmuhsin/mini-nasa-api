@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="card mt-5">
+      <h1 class="card-header">Todays Updates</h1>
+      <img [src]="apodData.url" alt="NASA APOD" class="card-img-top small-image">
+      <div class="card-body">
+        <h2 class="card-title">{{ apodData.title }}</h2>
+        <p class="card-text">{{ apodData.explanation }}</p>
+        <ul class="list-unstyled">
+          <li><strong>Date:</strong> {{ apodData.date }}</li>
+          <li><strong>Media Type:</strong> {{ apodData.media_type }}</li>
+          <li><strong>Service Version:</strong> {{ apodData.service_version }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  

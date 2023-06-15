@@ -1,0 +1,52 @@
+<div class="container">
+    <h1>Rover Data</h1>
+  
+    <div class="mb-3">
+      <label for="searchInput">Search:</label>
+      <input type="text" class="form-control" id="searchInput" [(ngModel)]="searchTerm">
+      <button class="btn btn-primary" type="button" (click)="searchRovers()">Search</button>
+    </div>
+  
+    <h4 class="mb-3">Example: Mars rover "curiosity", "opportunity", "spirit", "Perseverance"</h4>
+    <hr>
+  
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Landing Date</th>
+        <th>Launch Date</th>
+        <th>Status</th>
+        <th>Max Sol</th>
+        <th>Max Date</th>
+        <th>Total Photos</th>
+        <th>Cameras</th>
+        <th>Cameras Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rover of filteredRovers">
+        <td>{{ rover.name }}</td>
+        <td>{{ rover.landing_date }}</td>
+        <td>{{ rover.launch_date }}</td>
+        <td>{{ rover.status }}</td>
+        <td>{{ rover.max_sol }}</td>
+        <td>{{ rover.max_date }}</td>
+        <td>{{ rover.total_photos }}</td>
+        <td><ul>
+            <li *ngFor="let camera of rover.cameras">
+                {{ camera.name }}
+            </li>
+          </ul></td>
+        <td>
+          <ul>
+            <li *ngFor="let camera of rover.cameras">
+              {{ camera.full_name }}
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  

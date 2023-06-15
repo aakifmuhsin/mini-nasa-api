@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="mb-3">
+      <input type="text" class="form-control" [(ngModel)]="searchValue" placeholder="Enter Earth Date">
+      <button class="btn btn-primary" (click)="searchByEarthDate()">Show Image</button>
+    </div>
+  
+    <h4 class="mb-3">Example: Images "CHEMCAM", "NAVCAM", "MAST", "FHAZ", "RHAZ"</h4>
+  
+    <div class="row">
+      <div *ngFor="let photo of filteredPhotos" class="col-md-4 mb-3">
+        <div class="card">
+          <img [src]="photo.img_src" alt="Mars Rover Image" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{ photo.camera.name }}</h5>
+            <p class="card-text">{{ photo.rover.name }}</p>
+            <ul class="list-unstyled">
+              <li><strong>Earth Date:</strong> {{ photo.earth_date }}</li>
+              <li><strong>Rover Status:</strong> {{ photo.rover.status }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Uncomment the following lines if you want to add pagination -->
+    <!-- <mat-paginator [length]="filteredPhotos.length" [pageSize]="pageSize" (page)="handlePageChange($event)"></mat-paginator> -->
+  </div>
+  

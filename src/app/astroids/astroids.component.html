@@ -1,0 +1,39 @@
+<h1 class="mb-3">Asteroid Data</h1>
+
+<div class="row">
+  <div class="col">
+    <form class="mb-3">
+      <div class="row">
+        <div class="col">
+          <label for="start-date" class="form-label">Start Date:</label>
+          <input type="date" id="start-date" class="form-control" [(ngModel)]="startDate">
+        </div>
+        <div class="col">
+          <label for="end-date" class="form-label">End Date:</label>
+          <input type="date" id="end-date" class="form-control" [(ngModel)]="endDate">
+        </div>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary" (click)="searchAsteroids()">Search</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div *ngFor="let asteroid of asteroids" class="card mb-3">
+      <div class="card-body">
+        <h2 class="card-title">{{ asteroid.name }}</h2>
+        <p class="card-text">NEO Reference ID: {{ asteroid.neo_reference_id }}</p>
+        <p class="card-text">Absolute Magnitude: {{ asteroid.absolute_magnitude_h }}</p>
+        <p class="card-text">Estimated Diameter (min): {{ asteroid.estimated_diameter.kilometers.estimated_diameter_min }} km</p>
+        <p class="card-text">Estimated Diameter (max): {{ asteroid.estimated_diameter.kilometers.estimated_diameter_max }} km</p>
+        <p class="card-text">Is Potentially Hazardous: {{ asteroid.is_potentially_hazardous_asteroid ? 'Yes' : 'No' }}</p>
+        <p class="card-text">Close Approach Date: {{ asteroid.close_approach_data[0].close_approach_date_full }}</p>
+        <p class="card-text">Relative Velocity: {{ asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour }} km/h</p>
+        <p class="card-text">Miss Distance: {{ asteroid.close_approach_data[0].miss_distance.kilometers }} km</p>
+      </div>
+    </div>
+  </div>
+</div>

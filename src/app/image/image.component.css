@@ -1,0 +1,6 @@
+.mars-image {
+    width: 200px; /* Set the desired width */
+    height: 200px; /* Set the desired height */
+    object-fit: cover; /* Adjust the image to cover the specified dimensions */
+  }
+  
