@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NasaService } from '../nasa.service';
 import { HttpClient } from '@angular/common/http';
 
+// Interface defining the structure of an asteroid
 interface Asteroid {
   links: {
     self: string;
@@ -50,6 +51,7 @@ interface Asteroid {
   is_sentry_object: boolean;
 }
 
+// Interface defining the structure of Near Earth Objects
 interface NearEarthObjects {
   [date: string]: Asteroid[];
 }
@@ -66,14 +68,11 @@ export class AstroidsComponent {
   neoData: any;
 
   constructor(private nasaApiService: NasaService ,private http: HttpClient) {}
-  // ngOnInit() {
-  //   this.fetchData();
-  // }
+
+  // Method to search for asteroids based on selected start and end dates
   searchAsteroids(): void {
-    // Construct the API URL based on the selected start and end dates
     const apiUrl = `http://api.nasa.gov/neo/rest/v1/feed?start_date=${this.startDate}&end_date=${this.endDate}&detailed=false&api_key=BScd9FU3GpZvnoQhtJLXXSlBe99cJKhSc6EejY8R`;
 
-    // Make an HTTP GET request to the API
     this.http.get(apiUrl)
       .subscribe((response: any) => {
         // On successful response, extract the asteroid data
@@ -81,11 +80,9 @@ export class AstroidsComponent {
         const asteroidDates: string[] = Object.keys(nearEarthObjects); // Get the dates of the asteroids
         this.asteroids = []; // Clear the existing asteroids data array
 
-        // Iterate over each date and its corresponding asteroids
         asteroidDates.forEach((date: string) => {
           const asteroids: Asteroid[] = nearEarthObjects[date];
 
-          // Iterate over each asteroid and add it to the asteroids array
           asteroids.forEach((asteroid: Asteroid) => {
             this.asteroids.push(asteroid);
           });
@@ -95,6 +92,7 @@ export class AstroidsComponent {
       });
   }
 
+  // Method to fetch NEO data using NasaService
   fetchData(): void {
     this.nasaApiService.getNeoFeed(this.startDate, this.endDate)
       .subscribe(
