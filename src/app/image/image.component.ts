@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NasaService } from '../nasa.service';
 import { HttpClient } from '@angular/common/http';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatPaginator} from '@angular/material/paginator';
 import { ViewChild } from '@angular/core';
 
 @Component({
